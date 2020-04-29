@@ -37,7 +37,7 @@ function formView(dispatch, model) {
 }
 
 // my view takes in the interactions and model. It displays my model. My controller is update function
-function View(dispatch, model) {
+function view(dispatch, model) {
   return div(class: 'wrapper', [
     h2(),
     ulView(dispatch, model),
@@ -45,4 +45,4 @@ function View(dispatch, model) {
   ])
 }
 
-export default View
+export default view
