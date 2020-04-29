@@ -18,7 +18,6 @@ let todos = JSON.parse(localStorage.getItem('todos')) || [];
   }
 
   function removeTodo(e) { // remove individual todo
-   
     const index = e.target.dataset.index
     console.log(index)
     const parent = e.target.parentNode
@@ -35,17 +34,7 @@ let todos = JSON.parse(localStorage.getItem('todos')) || [];
     populateList(todos, todosList);
   }
 
-  function populateList(todos = [], todosList) { // renders my view default value is []
-    todosList.innerHTML = todos.map((todo, i) => {
-      return `
-        <li> 
-          <input type="checkbox" data-index=${i} id="todo${i}" ${todo.done ? 'checked' : ''} />
-          <label for="todo${i}"><span class="${todo.done ? "done" : ''}">${todo.text}</span></label>
-          <i class="far fa-trash-alt" data-index=${i}></i>
-        </li>
-      `; 
-    }).join(''); // from map to string
-  }
+  
 
   function toggleCompleted(e) {
     const el = e.target;
@@ -73,6 +62,18 @@ let todos = JSON.parse(localStorage.getItem('todos')) || [];
       default:
         return
     }
+  }
+
+  function populateList(todos = [], todosList) { // renders my view default value is []
+    todosList.innerHTML = todos.map((todo, i) => {
+      return `
+        <li> 
+          <input type="checkbox" data-index=${i} id="todo${i}" ${todo.done ? 'checked' : ''} />
+          <label for="todo${i}"><span class="${todo.done ? "done" : ''}">${todo.text}</span></label>
+          <i class="far fa-trash-alt" data-index=${i}></i>
+        </li>
+      `; 
+    }).join(''); // from map to string
   }
 
 // event delegation: the listeners are on the parent
